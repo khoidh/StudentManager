@@ -79,9 +79,9 @@ class Student extends CI_Controller
 		// $config['upload_path'] = base_url('upload/images/');
 		$config['upload_path'] = 'upload/images';
 		$config['allowed_types'] = 'gif|jpg|png';
-		//$config['max_size']	= '100';
-		//$config['max_width']  = '1024';
-		//$config['max_height']  = '768';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
 		$config['file_name'] = $data['image'];
 
 		$this->load->library('upload', $config);
