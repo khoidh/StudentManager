@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Sửa thông tin sinh viên</title>
-</head>
-<body> 
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--	<title>Sửa thông tin sinh viên</title>-->
+<!--</head>-->
+<!--<body> -->
 
-	<form  method="post" enctype="multipart/form-data" action="<?php echo base_url('student/update/'.$result->id);?>">
+	<form  method="post" enctype="multipart/form-data" action="<?php echo base_url('student/edit/'.$result->id);?>">
 
 		<table class ="" border="1px">
 			<tr>

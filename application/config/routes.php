@@ -86,4 +86,4 @@ $route['delete_point_type/(:num)'] = "point_type/delete/$1";
 $route['update_point_type/(:num)'] = "point_type/update/$1";
 $route['add_point_type'] = "point_type/add";
 
-$route['admin'] = 'admin/dashboard';
+//$route['admin'] = 'admin/dashboard';

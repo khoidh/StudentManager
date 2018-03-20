@@ -5,6 +5,9 @@
 class Student extends CI_Controller
 {
 	public $_base_url = 'student';
+	public $_sendEmail='chantroibinhyentk5l@gmail.com';
+	public $_sendName='Đàm Huy Khởi';
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,11 +17,14 @@ class Student extends CI_Controller
       	$this->load->library('form_validation');
       	$this->load->library('session');
       	$this->load->helper('url');
+
+      	//Thư viện gửi mail
+        //$this->load->library('email');
 	}
 
 	public function index(){
-        $this->data['page'] ='student/index'; 
-        $this->data['result'] =  $this->student_model->get_all(); 
+        $this->data['page'] ='student/index';
+        $this->data['result'] =  $this->student_model->get_all();
         $this->load->view('admin/master',$this->data);
 	}
 
@@ -28,29 +34,25 @@ class Student extends CI_Controller
 		redirect(base_url($this->_base_url));
 	}
 
-	/**
-    * edit Data from this method. load data và gọi view edit
-    *
-    * @return Response
-	*/
 	public function edit($id)
 	{
-		$this->data['result'] = $this->student_model->get_student_ID($id);;
+        $input = $this->input->post();
+        if($input)
+        {
+            $this->upload($input);
 
-		//Load class list from DB
-		$this->data['class'] = $this->class_manager_model->get_all();
+            $this->student_model->update($input);
+            redirect(base_url($this->_base_url));
+            return;
+        }
+
+        $this->data['result'] = $this->student_model->get_student_ID($id);
+
+        //Load class list from DB
+        $this->data['class'] = $this->class_manager_model->get_all();
 
         $this->data['page'] ='student/edit';
-        $this->load->view('admin/master',$this->data);	
-	}
-	public function update($id)
-	{
-		$input = $this->input->post();
-		$this->add1($input);
-		
-		//var_dump($input);die;
-		$this->student_model->update($input);
-		redirect(base_url($this->_base_url));     
+        $this->load->view('admin/master',$this->data);
 	}
 
 	/**
@@ -60,66 +62,112 @@ class Student extends CI_Controller
 	*/
 	public function add()
 	{
+        $input = $this->input->post();
+	    if($input)
+        {
+            $this->upload($input);
+            $this->student_model->insert($input);
+            redirect(base_url($this->_base_url));
+            return;
+        }
 		//Load class list from DB
 		$this->data['class'] = $this->class_manager_model->get_all();
         $this->data['page'] ='student/add';
-        $this->load->view('admin/master',$this->data);	
+        $this->load->view('admin/master',$this->data);
+
 	}
 
-	public function add_student()
-	{
-		$input = $this->input->post();
-		$this->add1($input);
-		$this->student_model->insert($input);
-		redirect(base_url($this->_base_url));
-	}
-
+	//Upload images
 	public function upload(&$data)
 	{
-		// $config['upload_path'] = base_url('upload/images/');
-		$config['upload_path'] = 'upload/images';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-		$config['file_name'] = $data['image'];
-
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
-		if ( ! $this->upload->do_upload('image'))
-		{
-			$error = array('error' => $this->upload->display_errors());
-			//$this->load->view('upload_form', $error);
-		}
-		else
-		{
-			$data = array('upload_data' => $this->upload->data());
-			//$this->load->view('upload_success', $data);
-		}
-	}
-
-
-	public function add1(&$data)
-	{
-	      if (!empty($_FILES['image']['name'])) 
+	      if (!empty($_FILES['image']['name']))
 	      {
-		        $config['upload_path'] = 'upload/images';
-		        $config['allowed_types'] = 'jpg|jpeg|png|gif';
-		        $config['file_name'] = $_FILES['image']['name'];
+              $config['upload_path'] = 'upload/images';
+              $config['allowed_types'] = 'jpg|jpeg|png|gif';
+              $config['file_name'] = $_FILES['image']['name'];
 
-		        $this->load->library('upload', $config);
-		        $this->upload->initialize($config);
-		       //var_dump($_FILES['image']['name']);die;
+              $this->load->library('upload', $config);
+              $this->upload->initialize($config);
 
-		        if ($this->upload->do_upload('image')) {
-		          $uploadData = $this->upload->data();
-		          $data["image"] = $uploadData['file_name'];
-		        } else{
-		          $data["image"] = '';
-		        }
-	      }else{
-	       		$data["image"] = '';
+              if ($this->upload->do_upload('image')) {
+                  $uploadData = $this->upload->data();
+                  $data["image"] = $uploadData['file_name'];
+              } else{
+                  $data["image"] = '';
+              }
+          }else{
+              $data["image"] = '';
 	      }
 	}
+
+	public function sendMail($id)
+    {
+        $input = $this->input->post();
+        if($input)
+        {
+            $this->send($input);
+            redirect(base_url($this->_base_url));
+            return;
+        }
+        $data = $this->student_model->get_student_ID($id);
+        $this->data['id'] =  $id;
+        $this->data['mail'] =  $data->mail;
+        $this->data['page'] ='student/sendMail';
+        $this->load->view('admin/master',$this->data);
+    }
+
+    public function send($data)
+    {
+        $config = array(
+            "protocol" => "smtp",
+            "smtp_host" => "ssl://smtp.googlemail.com",
+            "smtp_port" => 465,
+            "smtp_user" => "chantroibinhyentk5l@gmail.com",
+            "smtp_pass" => "Khoidh070187utehy",
+        );
+
+        $this->load->library("email", $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from("chantroibinyentk5l@gmail.com", "Mr.test");
+        $this->email->to($data["mail"]);
+        $this->email->subject($data["subject"]);
+        $this->email->message($data["message"]);
+
+        if(!$this->email->send())
+            show_error($this->email->print_debugger());
+    }
+
+    public function send11($data)
+    {
+        $this->load->library('email');
+        // Cấu hình
+        $config['protocol'] = 'sendmail';
+        $config['charset'] = 'utf-8';
+        $config['mailtype'] = 'html';
+        $config['wordwrap'] = TRUE;
+        $this->email->initialize($config);
+
+        //cau hinh email va ten nguoi gui
+        $this->email->from($this->_sendMail, $this._sendName);
+        //cau hinh nguoi nhan
+        $this->email->to($data->email);
+
+        $this->email->subject($data->subject);
+        $this->email->message($data->message);
+
+        //dinh kem file
+        if(!empty($data->attach) )
+            $this->email->attach($data->attach);
+        //thuc hien gui
+        if ( ! $this->email->send())
+        {
+            // Generate error
+            //echo $this->email->print_debugger();
+            return false;
+        }else{
+//            echo 'Gửi email thành công';
+            return true;
+        }
+    }
 }
 ?>

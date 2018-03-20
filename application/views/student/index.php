@@ -11,7 +11,7 @@
     <table class="table table-striped">
         <thead>
           <tr>
-                        <!-- <td> Id </td> -->
+             <!-- <td> Id </td> -->
             <th scope="col">Tên Học sinh </th>
             <th scope="col">Lớp </th>
             <th scope="col">Hòm thư </th>
@@ -33,8 +33,10 @@
                 <td><img src="<?php echo base_url('upload/images/')?><?php echo $value->image ?>" alt="" border=3 height=100 width=100></img></td>
 
                 <td>
-                    <a href="<?php echo base_url('student/');?>edit/<?php echo $value->id ?>">Sửa</a>
-                    <a href="<?php echo base_url('student/');?>delete/<?php echo $value->id ?>">Xóa</a>
+
+                    <a href="<?php echo base_url('student/');?>edit/<?php echo $value->id ?>">Sửa</a><br>
+                    <a href="<?php echo base_url('student/');?>delete/<?php echo $value->id ?>">Xóa</a><br>
+                    <a href="<?php echo base_url('student/');?>sendMail/<?php echo $value->id ?>">Gửi mail</a>
                 </td>
               </tr>
           <?php 
