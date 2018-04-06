@@ -2,18 +2,18 @@
 <?php $this->load->view("student/head",$this->data);?>
 <?php //var_dump($class);   ?>
 
-<div class="wrapper">
-    <form class="widget" action="<?php echo base_url() . 'student/index1'; ?>" method="post">
+<!--<div class="wrapper">-->
+    <form class="wrapper" action="<?php echo base_url() . 'student/index1'; ?>" method="post">
         <select class="form-control" name="field">
             <option selected="selected" disabled="disabled" value="">Filter By</option>
             <option value="fullname">Họ tên</option>
             <option value="className">Lớp</option>
             <option value="mail">Hòm thư</option>
         </select>
-        <input class="form-control" type="text" name="search" value="" placeholder="Search...">
+        <input class="form-control" type="text" name="search" value="" placeholder="Search..." height='100px'>
         <input class="button blueB" type="submit" name="filter" value="Go">
     </form>
-</div>
+<!--</div>-->
 
 <div class="wrapper">
     <div class="widget">

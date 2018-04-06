@@ -186,8 +186,10 @@ class Student extends CI_Controller
         $field  = $this->input->post('field');
         $search = $this->input->post('search');
 
-        if (isset($filter) && !empty($search)) {
+        if (isset($filter) && isset($field) && !empty($search)) {
            // $this->load->model('student_model');
+            var_dump($field);
+            die;
             $this->data['result'] = $this->student_model->getStudentsWhereLike($field, $search);
         } else {
             //$this->load->model('student_model');

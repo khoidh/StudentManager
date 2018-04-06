@@ -84,14 +84,16 @@
         public function getStudentsWhereLike($field, $search)
         {
 
-//            $sql = 'SELECT * FROM $this->table
-//            WHERE $field LIKE '%$search%'
-//            ORDER BY `students`.`registered_at`
-//        ';
-//            $query = $this->db->query($sql);
-//            return $query->result();
+            $this->db->select('student.id, student.fullname, student.mail, student.address, student.image, student.class_id, class.name as className');
+            $this->db->from('student');
+            $this->db->join('class', 'student.class_id = class.id');
+            $this->db->where(array('student.delete_flag' => 0,'class.delete_flag' => 0));
+            $this->db->like($field, $search);
+            $this->db->order_by($field);
 
-            $query = $this->db->like($field, $search)->orderBy('id')->get($this->table);
+            //$query = $this->db->like($field, $search)->orderBy($field)->get($this->table);
+
+            $query = $this->db->get();
             return $query->result();
         }
 	}
