@@ -1,19 +1,15 @@
-<!--/**-->
-<!-- * Created by PhpStorm.-->
-<!-- * User: khoidh-->
-<!-- * Date: 3/16/2018-->
-<!-- * Time: 11:29 AM-->
-<!-- */-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<!---->
-<!--<head runat="server">-->
-<!--</head>-->
+<br>
+<br>
+<br>
+<br>
+
+
 <form  method="post" enctype="multipart/form-data" action="<?php echo base_url('student/sendMail/'.$id);?>">
 <!--    <form  method="post" id="form1" runat="server">-->
     <div>
      <table width="600px" align="center">
             <tr>
-                <td colspan="2" align="center"><b>Send Mail</b></td>
+                <td colspan="2" align="center"><b></b></td>
             </tr>
             <tr>
                 <td> To </td>

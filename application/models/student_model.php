@@ -1,8 +1,8 @@
 <?php
 	class Student_model extends CI_Model
 	{
-		
-		public function __construct()
+        var $table='student';
+        public function __construct()
 		{
 			parent::__construct();
 			$this->load->database();
@@ -35,6 +35,21 @@
 	        return $delete?true:false;
 		}
 
+        /**
+         * Lay tong so
+         */
+        function get_total($input = array())
+        {
+            //$this->get_list_set_input($input);
+            $this->db->select('student.id, student.fullname, student.mail, student.address, student.image, student.class_id, class.name as className');
+            $this->db->from($this->table);
+            $this->db->join('class', 'student.class_id = class.id');
+            $this->db->where(array('student.delete_flag' => 0,'class.delete_flag' => 0));
+
+            $query = $this->db->get();
+
+            return $query->num_rows();
+        }
 
 		//Load info student by $id
 		public function get_student_ID($id){
@@ -65,5 +80,19 @@
 	    {    	        
 	        return $this->db->insert('student', $data);
 	    }
+
+        public function getStudentsWhereLike($field, $search)
+        {
+
+//            $sql = 'SELECT * FROM $this->table
+//            WHERE $field LIKE '%$search%'
+//            ORDER BY `students`.`registered_at`
+//        ';
+//            $query = $this->db->query($sql);
+//            return $query->result();
+
+            $query = $this->db->like($field, $search)->orderBy('id')->get($this->table);
+            return $query->result();
+        }
 	}
 ?>

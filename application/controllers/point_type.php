@@ -17,6 +17,10 @@ class Point_type extends CI_Controller
 	public function index(){
 		$data1 = $this->point_type_model->get_all();
 		$data['result'] = $data1;
+
+        $total=$this->point_type_model->get_total();
+        $this->data['total']=$total;
+
 		$this->load->view('point_type/index', $data);
 	}
 

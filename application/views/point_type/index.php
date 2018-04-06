@@ -8,6 +8,8 @@
 
 <body>
  -->
+<?php $this->load->view("point_type/head",$this->data);?>
+
    <table class="table table-striped">
     <thead>
       <tr>

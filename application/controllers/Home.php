@@ -17,37 +17,7 @@ class Home extends MY_Controller {
 
         $this->data = array();
         $this->data['page'] ='admin/home'; 
-        //$this->data['data'] = 
+        //$this->data['data'] =
         $this->load->view('admin/master',$this->data);
     }
-    // public function showStudent()
-    // {
-    // 	$this->data = array();
-    //     $this->data['page'] ='student/index'; 
-    //     $this->data['result'] =  $this->student_model->get_all(); 
-    //     $this->load->view('admin/master',$this->data);
-    // }
-    // public function showClass()
-    // {
-    // 	$this->data = array();
-    //     $this->data['page'] ='class/index';
-    //     $this->data['result'] =  $this->class_manager_model->get_all();
-    //     $this->load->view('admin/master',$this->data);
-    // }
-    // public function showSubject()
-    // {
-    // 	$this->data = array();
-    //     $this->data['page'] ='subject/index';
-    //     $this->data['result'] = $this->subject_model->get_all();
-    //     $this->load->view('admin/master',$this->data);
-    // }
-    // public function showPoint()
-    // {
-    // 	$this->data = array();
-    //     $this->data['page'] ='point/index';
-    //     $this->data['result'] = $this->point_model->get_all();
-    //     $this->data['point_type'] = $this->point_model->get_point_type();
-    //     $this->load->view('admin/master',$this->data);
-    // }
-
 }

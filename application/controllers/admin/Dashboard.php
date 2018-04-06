@@ -4,6 +4,6 @@ class Dashboard extends Admin_Controller {
         parent::__construct();
     }
     public function index() {
-        $this->render('admin/dashboard_view');
+        //$this->render('admin/dashboard_view');
     }
 }

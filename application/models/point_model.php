@@ -34,6 +34,24 @@
 			return $query->result();
 		}
 
+        /**
+         * Lay tong so
+         */
+        function get_total($input = array())
+        {
+            $this->db->distinct();
+            $this->db->select('point.id,fullname, student_id, subject_id, point_type_id, subject.name AS subject_name, point_type.name AS point_type_name, point.point');
+            $this->db->from('point');
+            $this->db->join('student', 'student.id = point.student_id');
+            $this->db->join('subject', 'subject.id = point.subject_id');
+            $this->db->join('point_type', 'point_type.id = point.point_type_id');
+            $this->db->where(array('point.delete_flag' => 0));
+
+            $query = $this->db->get();
+
+            return $query->num_rows();
+        }
+
 		public function get_point_type(){
 			$query = $this->db->get('point_type');  // Produces: SELECT * FROM point_type
 			$table= $query->result();			

@@ -22,7 +22,15 @@ class Student extends CI_Controller
         //$this->load->library('email');
 	}
 
+
 	public function index(){
+
+        $total=$this->student_model->get_total();
+        $this->data['total']=$total;
+
+        //Load class list from DB
+        $this->data['class'] = $this->class_manager_model->get_all();
+
         $this->data['page'] ='student/index';
         $this->data['result'] =  $this->student_model->get_all();
         $this->load->view('admin/master',$this->data);
@@ -169,5 +177,37 @@ class Student extends CI_Controller
             return true;
         }
     }
+
+
+    public function index1()
+    {
+
+        $filter = $this->input->post('filter');
+        $field  = $this->input->post('field');
+        $search = $this->input->post('search');
+
+        if (isset($filter) && !empty($search)) {
+           // $this->load->model('student_model');
+            $this->data['result'] = $this->student_model->getStudentsWhereLike($field, $search);
+        } else {
+            //$this->load->model('student_model');
+            $this->data['result'] = $this->student_model->get_all();
+        }
+
+        $this->data['module']    = 'admin';
+        $this->data['view_file'] = 'students/view';
+        //Load class list from DB
+        $this->data['class'] = $this->class_manager_model->get_all();
+        $this->data['total']=$this->student_model->get_total();;
+        $this->data['page'] ='student/index';
+
+//
+//        $this->load->module('templates');
+//        $this->templates->admin($data);
+        $this->load->view('admin/master',$this->data);
+
+    }
 }
 ?>
+
+

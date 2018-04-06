@@ -137,7 +137,8 @@ $autoload['model'] = array();
 // Nó luôn luôn là một ý tưởng tốt để autoload các thư viện và người trợ giúp thường được sử dụng trong các ứng dụng. Mở config/autoload.phptệp, chỉ định thư viện và tệp trợ giúp để tự động tải.
 
 $autoload['libraries'] = array('database', 'session');
-$autoload['helper'] = array('url');
+//$autoload['helper'] = array('url');
+$autoload['helper'] = array('url','file','date','common');
 
 
 // File này có chức năng tự động tải các thư viện, class cần thiết của hệ thống trong lần đầu tiên gọi đến nó. Thay vì lặp đi lặp lại việc gọi một số class được dùng thường xuyên và ở nhiều nơi thì nó cho phép thiết lập tại file này, giúp việc quản lý đơn giản hơn rất nhiều.

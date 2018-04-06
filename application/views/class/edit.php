@@ -4,6 +4,8 @@
 	<title>edit lass</title>
 </head>
 <body> -->
+<?php $this->load->view("class/head",$this->data);?>
+
 	<form method="post" action="<?php echo base_url('classmanager/update/'.$result->id);?>">
 		<table border="1px">
 			<tr>

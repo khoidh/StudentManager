@@ -1,9 +1,10 @@
 <!--<!DOCTYPE html>-->
 <!--<html>-->
 <!--<head>-->
-<!--	<title>Sửa thông tin sinh viên</title>-->
+<!--	<title>Sửa thông tin học sinh</title>-->
 <!--</head>-->
 <!--<body> -->
+<?php $this->load->view("student/head",$this->data);?>
 
 	<form  method="post" enctype="multipart/form-data" action="<?php echo base_url('student/edit/'.$result->id);?>">
 

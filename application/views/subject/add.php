@@ -4,12 +4,15 @@
 	<title>Bổ sung môn học</title>
 </head>
 <body> -->
+<?php $this->load->view("subject/head",$this->data);?>
+
 	<form method="post" action="<?php echo base_url('subject/add_subject');?>">
 		<table border="1px">
-<!-- 			<tr>
+
+ 			<tr>
 				<td> Mã </td>
 				<td><input type="text" name="id" value="" readonly> </td>
-			</tr> -->
+			</tr>
 			<tr>
 				<td> Tên môn học </td>
 				<td><input type="text" name="name" value="" > </td>

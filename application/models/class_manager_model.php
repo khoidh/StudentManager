@@ -15,7 +15,17 @@
 			$table= $query->result();		
 			return $table;
 		}
-		
+
+        /**
+         * Lay tong so
+         */
+        function get_total($input = array())
+        {
+            $query = $this->db->get_where('class', array('delete_flag' => 0));
+
+            return $query->num_rows();
+        }
+
 		/**
 
 		**/

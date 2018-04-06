@@ -1,5 +1,5 @@
 <?php
-/**
+/*
 * 
 */
 class Point extends CI_Controller
@@ -18,9 +18,12 @@ class Point extends CI_Controller
       	$this->load->helper('url');
 	}
 
-	public function index(){
+        public function index(){
         $this->data['result'] = $this->point_model->get_all();
         $this->data['point_type'] = $this->point_model->get_point_type();
+
+        $total=$this->point_model->get_total();
+        $this->data['total']=$total;
 
         $this->data['page'] ='point/index';
         $this->load->view('admin/master',$this->data);
@@ -32,7 +35,7 @@ class Point extends CI_Controller
 		redirect(base_url($this->_base_url));
 	}
 
-	/**
+	/*
     * edit Data from this method. load data và gọi view edit
     *
     * @return Response
@@ -59,7 +62,7 @@ class Point extends CI_Controller
 		redirect(base_url($this->_base_url));       
 	}
 
-	/**
+	/*
     * add Data from this method.
     *
     * @return Response

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
 * 
 */
 class subject extends CI_Controller
@@ -18,6 +18,10 @@ class subject extends CI_Controller
 
 	public function index(){
 		$this->data = array();
+
+        $total=$this->subject_model->get_total();
+        $this->data['total']=$total;
+
         $this->data['page'] ='subject/index';
         $this->data['result'] = $this->subject_model->get_all();
         $this->load->view('admin/master',$this->data);
@@ -29,7 +33,7 @@ class subject extends CI_Controller
 		redirect(base_url($this->$_base_url));
 	}
 
-	/**
+	/*
     * edit Data from this method. load data và gọi view edit
     *
     * @return Response
@@ -48,7 +52,7 @@ class subject extends CI_Controller
 		redirect(base_url($this->_base_url));      
 	}
 
-		/**
+	/*
     * add Data from this method.
     *
     * @return Response

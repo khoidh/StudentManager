@@ -5,6 +5,8 @@
 </head>
 <body> -->
 
+<?php $this->load->view("subject/head",$this->data);?>
+
 	<form method="post" action="<?php echo base_url('update_subject/'.$result->id);?>">
 		<table border="1px">
 			<tr>

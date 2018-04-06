@@ -13,6 +13,16 @@
 			$query = $this->db->get_where('subject', array('delete_flag' => 0)); 
 			return $query->result();
 		}
+        /**
+         * Lay tong so
+         */
+        function get_total($input = array())
+        {
+            // SELECT * FROM subject WHERE  'delete_flag' = 0
+            $query = $this->db->get_where('subject', array('delete_flag' => 0));
+
+            return $query->num_rows();
+        }
 
 		/**
 		 * delete Subject by id_Subject

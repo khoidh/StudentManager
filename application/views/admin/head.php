@@ -1,31 +1,57 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>public/admin/images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url()?>public/admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link href="<?php echo base_url()?>public/admin/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>public/admin/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>public/admin/css/lib/owl.carousel.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url()?>public/admin/css/lib/owl.theme.default.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url()?>public/admin/css/helper.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>public/admin/css/style.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
-    <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <title>LAP TRINH PHP USING CODEIGNITER</title>
+
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="shortcut icon" href="<?php echo public_url() ?>/admin/images/icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo public_url() ?>/admin/crown/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo public_url() ?>/admin/css/css.css" media="screen" />
 
 
-<![endif]-->
-    <!-- <link rel = "stylesheet" type = "text/css" href = "<?php  echo base_url(); ?>assets/css/bootstrap.min.css">
-    <script type = 'text/javascript' src = "<?php  echo base_url();?>assets/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript">
+        var admin_url 	= '';
+        var base_url 	= '';
+        var public_url 	= '';
+    </script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/spinner/jquery.mousewheel.js"></script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/forms/uniform.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/forms/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/forms/autogrowtextarea.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/forms/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/forms/jquery.inputlimiter.min.js"></script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/tables/datatable.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/tables/tablesort.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/tables/resizable.min.js"></script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.collapsible.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.progress.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.timeentry.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.breadcrumbs.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/plugins/ui/jquery.sourcerer.js"></script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/admin/crown/js/custom.js"></script>
+
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/chosen/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/scrollTo/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/number/jquery.number.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/formatCurrency/jquery.formatCurrency-1.4.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/zclip/jquery.zclip.js"></script>
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/jquery/colorbox/jquery.colorbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo public_url() ?>/js/jquery/colorbox/colorbox.css" media="screen" />
+
+    <script type="text/javascript" src="<?php echo public_url() ?>/js/custom_admin.js" type="text/javascript"></script>
 </head>

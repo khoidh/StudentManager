@@ -10,33 +10,71 @@
 
 <body> -->
 
-   <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Class</th>
-        <th scope="col">Function</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php 
-          // $row_index=0;
-          foreach ($result as $value) { ?>
-          <tr>
-            <!-- <td scope="row"> <?php $row_index ?> </th> -->
-            <td> <?php echo $value->id; ?> </td>
-            <td> <?php echo $value->name; ?> </td>
-            <td>
-                <a href="<?php echo base_url('classManager/');?>edit/<?php echo $value->id ?>">Sửa</a>
-                <a href="<?php echo base_url('classManager/');?>delete/<?php echo $value->id ?>">Xóa</a>
-            </td>
-          </tr>
-      <?php 
-          // $row_index++ ;
-      } ?>
-    </tbody>
-   </table>
+<?php $this->load->view("class/head",$this->data);?>
 
-    <a href="<?php echo base_url('classManager/');?>add">Bổ sung</a>
-<!-- </body>
-</html> -->
+<div class="wrapper">
+    <div class="widget">
+
+        <div class="title">
+            <span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck" /></span>
+            <h6>Danh sách lớp học</h6>
+            <div class="num f12">Tổng số: <b><?php echo $total;?></b></div>
+        </div>
+
+        <form action="http://localhost/webphp/index.php/admin/user.html" method="get" class="form" name="filter">
+            <table cellpadding="0" cellspacing="0" width="100%" class="sTable mTable myTable withCheck" id="checkAll">
+                <thead>
+                <tr>
+                    <td style="width:10px;"><img src="<?php echo public_url()?>/admin/images//icons/tableArrows.png" /></td>
+                    <td style="width:80px;">Mã lớp</td>
+                    <td>Tên lớp</td>
+                    <td style="width:100px;">Hành động</td>
+                </tr>
+                </thead>
+
+                <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <div class="list_action itemActions">
+                            <a href="#submit" id="submit" class="button blueB" url="user/del_all.html">
+                                <span style='color:white;'>Xóa hết</span>
+                            </a>
+                        </div>
+
+                        <div class='pagination'>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+
+                <tbody>
+                <!-- Filter -->
+
+                <?php
+                foreach ($result as $value) : ?>
+                    <tr>
+                        <td><input type="checkbox" name="id[]" value="<?php echo $value->id?>" /></td>
+
+                        <td> <?php echo $value->id; ?> </td>
+                        <td> <?php echo $value->name; ?> </td>
+
+                        <td class="option">
+                            <a href="<?php echo base_url('student/');?>edit/<?php echo $value->id ?>" title="Chỉnh sửa" class="tipS ">
+                                <img src="<?php echo public_url()?>/admin/images//icons/color/edit.png" />
+                            </a>
+
+                            <a href="<?php echo base_url('student/');?>delete/<?php echo $value->id ?>" title="Xóa" class="tipS verify_action" >
+                                <img src="<?php echo public_url()?>/admin/images//icons/color/delete.png" />
+                            </a>
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+

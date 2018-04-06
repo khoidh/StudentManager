@@ -4,6 +4,8 @@
 	<title>Bổ sung kiểu điểm</title>
 </head>
 <body> -->
+<?php $this->load->view("point_type/head",$this->data);?>
+
 	<form method="post" action="<?php echo base_url('point_type/add_point_type');?>">
 		<table border="1px" cellspacing="0" cellpadding="2">
 			<tr>

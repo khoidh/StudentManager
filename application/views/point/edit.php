@@ -1,9 +1,11 @@
 <!-- <!DOCTYPE html>
 <html>
 <head>
-	<title>Sửa điểm sinh viên</title>
+	<title>Sửa điểm học sinh</title>
 </head>
 <body> -->
+
+<?php $this->load->view("point/head",$this->data);?>
 
 	<form method="post" action="<?php echo base_url('update_point/'.$result->id);?>">
 		<table border="1px">

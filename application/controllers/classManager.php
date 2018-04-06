@@ -18,6 +18,10 @@ class ClassManager extends CI_Controller
     	$this->data = array();
         $this->data['page'] ='class/index';
         $this->data['result'] =  $this->class_manager_model->get_all();
+
+        $total=$this->class_manager_model->get_total();
+        $this->data['total']=$total;
+
         $this->load->view('admin/master',$this->data);
 	}
 
